@@ -1,0 +1,8 @@
+cd ./exec 
+
+javac ./serwer/*.java -classpath ./serwer:./serwer/xmlrpc-1.2-b1.jar
+java -classpath .:./serwer/xmlrpc-1.2-b1.jar serwer.serwerRPC
+
+javac ./klient/*.java -classpath ./klient:./klient/xmlrpc-1.2-b1.jar 
+java -classpath .:./klient/xmlrpc-1.2-b1.jar klient.klientRPC
+
