@@ -35,7 +35,6 @@ public class Main {
         }catch (Exception e)  {
             System.out.println("Server can't be registered...");
             e.printStackTrace();
-            return;
         }
     }
 }
