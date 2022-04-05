@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package pl.edu.pwr.rsi.grpc.interface;
+
+option java_multiple_files = true;
+option java_package = "pl.edu.pwr.rsi.grpc.interfaces.lib";
+option java_outer_classname = "HelloWorldProto";
+
+
+service MyService {
+    rpc ShowRanking (EmptyRequest) returns (stream RankingValue) {}
+    rpc AddToRanking (stream RankingValue) returns (MessageResponse) {}
+    rpc FindInRanking (Score) returns (RankingValue) {}
+}
+
+message EmptyRequest {}
+
+message RankingValue {
+    string name = 1;
+    int32 score = 2;
+}
+
+message Score {
+    int32 score = 1;
+}
+
+message MessageResponse {
+    string message = 1;
+}
+

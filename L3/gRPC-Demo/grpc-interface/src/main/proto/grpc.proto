@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package pl.edu.pwr.rsi.grpc.interface;
+
+option java_multiple_files = true;
+option java_package = "pl.edu.pwr.rsi.grpc.interfaces.lib";
+option java_outer_classname = "GrpcProto";
+
+
+service MyService {
+    rpc ShowRanking (EmptyRequest) returns (stream RankingValue) {}
+    rpc AddToRanking (stream RankingValue) returns (MessageResponse) {}
+    rpc FindInRanking (Score) returns (RankingValue) {}
+    rpc SendImage (stream FileUploadRequest) returns (MessageResponse) {}
+}
+
+message EmptyRequest {}
+
+message RankingValue {
+    string name = 1;
+    int32 score = 2;
+}
+
+message Score {
+    int32 score = 1;
+}
+
+message MessageResponse {
+    string message = 1;
+}
+
+message MetaData {
+    string name = 1;
+    string type = 2;
+  }
+  
+message File {
+    bytes data = 1;
+}
+
+message FileUploadRequest {
+    oneof request {
+      MetaData metadata = 1;
+      File file = 2;
+    }
+}
